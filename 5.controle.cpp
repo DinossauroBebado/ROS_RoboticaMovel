@@ -43,22 +43,50 @@ int main(int argc, char **argv)
 	while(1){
             if (kbhit()){
 
-                      char comando = getchar(); 
+                      switch(getchar()){
                       
-                      if(comando=='a'){
-                        ROS_INFO("A");
+                      case 'w':
+                            // go forward 
+                            ROS_INFO("w");
+                            ros::spinOnce();
+                            msg.angular.z= 0;
+                            msg.linear.x = 1;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break;
+                       case 'x':
+                            //go back 
+                             ROS_INFO("X");
+                             ros::spinOnce();
+                             msg.angular.z = 0; 
+                             msg.linear.x = -1;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break;
+                        case 'a':
+                            //go back 
+                             ROS_INFO("a");
+                             ros::spinOnce();
+                             msg.linear.x = 0;
+                             msg.angular.z = M_PI/2;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break;
+                        default:
                         ros::spinOnce();
           
-                        msg.linear.x = 2;
+                        msg.linear.x = 0;
+                        msg.angular.z = 0 ;
                         pub.publish(msg);
                             ros::spinOnce();
-                        sleep(2);
-                      
-                              msg.linear.x = 0;
-                              pub.publish(msg);
-                              ros::spinOnce();
+                        sleep(1);
                       }
-            
+                      
+ 
+
             }		
  }
  

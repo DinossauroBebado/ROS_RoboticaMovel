@@ -20,6 +20,8 @@
 #include <math.h>   
 #include "kbhit.h"
 
+//rosrun tutorial_ros 5.controle
+
 using namespace std;
  
 int main(int argc, char **argv)
@@ -39,6 +41,8 @@ int main(int argc, char **argv)
 
   //entender o porque de precisar disso para rodar 
 	system("rosservice call reset");
+
+    int vel_linear = 2 ; 
 
 	while(1){
             if (kbhit()){
@@ -75,7 +79,73 @@ int main(int argc, char **argv)
                                 ros::spinOnce();
                             sleep(1);
                             break;
+                        case 'd':
+                            //go back 
+                             ROS_INFO("d");
+                             ros::spinOnce();
+                             msg.linear.x = 0;
+                             msg.angular.z = - M_PI/2;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break; 
+                        case 'q':
+                            //go back 
+                             ROS_INFO("q");
+                             ros::spinOnce();
+                             msg.linear.x = 2;
+                             msg.angular.z =  M_PI/2;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break;
+                        case 'z':
+                            //go back 
+                             ROS_INFO("z");
+                             ros::spinOnce();
+                             msg.linear.x = -2;
+                             msg.angular.z =  M_PI/2;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break; 
+                        case 'e':
+                            //go back 
+                             ROS_INFO("e");
+                             ros::spinOnce();
+                             msg.linear.x = 2;
+                             msg.angular.z = - M_PI/2;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break; 
+                        case 'c':
+                            //go back 
+                             ROS_INFO("c");
+                             ros::spinOnce();
+                             msg.linear.x = -2;
+                             msg.angular.z =  - M_PI/2;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break; 
+                        case 's':
+                            //go back 
+                             ROS_INFO("s");
+                             ros::spinOnce();
+                             msg.linear.x = 0;
+                             msg.angular.z =  0;
+                            pub.publish(msg);
+                                ros::spinOnce();
+                            sleep(1);
+                            break; 
+                        case 'p':
+                            ROS_INFO("NODE shutdown");
+                            //close node s
+                            ros::shutdown();
+                            break; 
                         default:
+
                         ros::spinOnce();
           
                         msg.linear.x = 0;

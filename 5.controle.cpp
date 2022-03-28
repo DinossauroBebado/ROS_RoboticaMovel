@@ -42,7 +42,8 @@ int main(int argc, char **argv)
   //entender o porque de precisar disso para rodar 
 	system("rosservice call reset");
 
-    int vel_linear = 2 ; 
+    int vel_linear = 1 ; 
+    float vel_angular = M_PI/2;
 
 	while(1){
             if (kbhit()){
@@ -54,7 +55,7 @@ int main(int argc, char **argv)
                             ROS_INFO("w");
                             ros::spinOnce();
                             msg.angular.z= 0;
-                            msg.linear.x = 1;
+                            msg.linear.x = vel_linear;
                             pub.publish(msg);
                                 ros::spinOnce();
                             sleep(1);
@@ -64,7 +65,7 @@ int main(int argc, char **argv)
                              ROS_INFO("X");
                              ros::spinOnce();
                              msg.angular.z = 0; 
-                             msg.linear.x = -1;
+                             msg.linear.x = -vel_linear;
                             pub.publish(msg);
                                 ros::spinOnce();
                             sleep(1);
@@ -74,7 +75,7 @@ int main(int argc, char **argv)
                              ROS_INFO("a");
                              ros::spinOnce();
                              msg.linear.x = 0;
-                             msg.angular.z = M_PI/2;
+                             msg.angular.z =vel_angular ;
                             pub.publish(msg);
                                 ros::spinOnce();
                             sleep(1);
@@ -84,7 +85,7 @@ int main(int argc, char **argv)
                              ROS_INFO("d");
                              ros::spinOnce();
                              msg.linear.x = 0;
-                             msg.angular.z = - M_PI/2;
+                             msg.angular.z = - vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
                             sleep(1);
@@ -93,8 +94,8 @@ int main(int argc, char **argv)
                             //go back 
                              ROS_INFO("q");
                              ros::spinOnce();
-                             msg.linear.x = 2;
-                             msg.angular.z =  M_PI/2;
+                             msg.linear.x = vel_linear;
+                             msg.angular.z =  vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
                             sleep(1);
@@ -103,8 +104,8 @@ int main(int argc, char **argv)
                             //go back 
                              ROS_INFO("z");
                              ros::spinOnce();
-                             msg.linear.x = -2;
-                             msg.angular.z =  M_PI/2;
+                             msg.linear.x = -vel_linear;
+                             msg.angular.z = vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
                             sleep(1);
@@ -113,8 +114,8 @@ int main(int argc, char **argv)
                             //go back 
                              ROS_INFO("e");
                              ros::spinOnce();
-                             msg.linear.x = 2;
-                             msg.angular.z = - M_PI/2;
+                             msg.linear.x = vel_linear;
+                             msg.angular.z = - vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
                             sleep(1);
@@ -123,8 +124,8 @@ int main(int argc, char **argv)
                             //go back 
                              ROS_INFO("c");
                              ros::spinOnce();
-                             msg.linear.x = -2;
-                             msg.angular.z =  - M_PI/2;
+                             msg.linear.x = -vel_linear;
+                             msg.angular.z =  - vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
                             sleep(1);
@@ -143,7 +144,14 @@ int main(int argc, char **argv)
                             ROS_INFO("NODE shutdown");
                             //close node s
                             ros::shutdown();
-                            break; 
+                            break;
+                        case '1':
+                             
+                            ROS_INFO("1");
+                            
+                            
+                             vel_angular++ ;
+                            break;  
                         default:
 
                         ros::spinOnce();

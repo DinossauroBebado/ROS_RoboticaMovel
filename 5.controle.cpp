@@ -45,10 +45,14 @@ int main(int argc, char **argv)
     int vel_linear = 1 ; 
     float vel_angular = M_PI/2;
 
-	while(1){
-            if (kbhit()){
+   
 
-                      switch(getchar()){
+	while(1){
+    
+            if (kbhit()){
+                 char teclado = getchar();
+
+                      switch(teclado){
                       
                       case 'w':
                             // go forward 
@@ -58,7 +62,7 @@ int main(int argc, char **argv)
                             msg.linear.x = vel_linear;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                            
                             break;
                        case 'x':
                             //go back 
@@ -68,7 +72,7 @@ int main(int argc, char **argv)
                              msg.linear.x = -vel_linear;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                           
                             break;
                         case 'a':
                             //go back 
@@ -78,7 +82,7 @@ int main(int argc, char **argv)
                              msg.angular.z =vel_angular ;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                            
                             break;
                         case 'd':
                             //go back 
@@ -88,7 +92,7 @@ int main(int argc, char **argv)
                              msg.angular.z = - vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                            
                             break; 
                         case 'q':
                             //go back 
@@ -98,7 +102,7 @@ int main(int argc, char **argv)
                              msg.angular.z =  vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                            
                             break;
                         case 'z':
                             //go back 
@@ -108,7 +112,7 @@ int main(int argc, char **argv)
                              msg.angular.z = vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                            
                             break; 
                         case 'e':
                             //go back 
@@ -118,7 +122,7 @@ int main(int argc, char **argv)
                              msg.angular.z = - vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                            
                             break; 
                         case 'c':
                             //go back 
@@ -128,7 +132,7 @@ int main(int argc, char **argv)
                              msg.angular.z =  - vel_angular;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                            
                             break; 
                         case 's':
                             //go back 
@@ -138,7 +142,7 @@ int main(int argc, char **argv)
                              msg.angular.z =  0;
                             pub.publish(msg);
                                 ros::spinOnce();
-                            sleep(1);
+                            
                             break; 
                         case 'p':
                             ROS_INFO("NODE shutdown");
@@ -150,7 +154,8 @@ int main(int argc, char **argv)
                             ROS_INFO("1");
                             
                             
-                             vel_angular++ ;
+                             vel_angular = vel_angular +1 ;
+                             printf("TVel_angular[%i]\n", vel_angular);
                             break;  
                         default:
 
@@ -160,7 +165,7 @@ int main(int argc, char **argv)
                         msg.angular.z = 0 ;
                         pub.publish(msg);
                             ros::spinOnce();
-                        sleep(1);
+                        
                       }
                       
  

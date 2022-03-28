@@ -152,11 +152,39 @@ int main(int argc, char **argv)
                         case '1':
                              
                             ROS_INFO("1");
-                            
-                            
-                             vel_angular = vel_angular +1 ;
-                             printf("TVel_angular[%i]\n", vel_angular);
+                           
+                              
+                             vel_linear = vel_linear +1 ;
+                             msg.linear.x = vel_linear;
+
+                            break; 
+                        case '2':
+                             
+                            ROS_INFO("2");
+                           
+                              
+                             vel_linear = vel_linear -1 ;
+                             msg.linear.x = vel_linear;
+
                             break;  
+                        case '3':
+                             
+                            ROS_INFO("3");
+                           
+                              
+                             vel_angular = vel_linear + M_PI/4 ;
+                             msg.angular.z= vel_angular;
+
+                            break; 
+                        case '4':
+                             
+                            ROS_INFO("4");
+                           
+                              
+                             vel_angular = vel_linear - M_PI/4 ;
+                             msg.angular.z= vel_angular;
+
+                            break; 
                         default:
 
                         ros::spinOnce();

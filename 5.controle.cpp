@@ -19,8 +19,9 @@
 #include <iostream>
 #include <math.h>   
 #include "kbhit.h"
-
-//rosrun tutorial_ros 5.controle
+//roscore | inicia o ros 
+//rosrun turtlesim turtlesim_node | roda o modulo da tartaruga 
+//rosrun tutorial_ros 5.controle | inicia esse no 
 
 using namespace std;
  
@@ -51,106 +52,95 @@ int main(int argc, char **argv)
     
             if (kbhit()){
                  char teclado = getchar();
-
+                     ros::spinOnce();
                       switch(teclado){
                       
                       case 'w':
-                            // go forward 
+                            // W Movimento	linear	para	frente
                             ROS_INFO("w");
-                            ros::spinOnce();
+                           
                             msg.angular.z= 0;
                             msg.linear.x = vel_linear;
-                            pub.publish(msg);
-                                ros::spinOnce();
+                            
                             
                             break;
                        case 'x':
-                            //go back 
+                            // X movimento linear para trás
                              ROS_INFO("X");
-                             ros::spinOnce();
+                             
                              msg.angular.z = 0; 
                              msg.linear.x = -vel_linear;
-                            pub.publish(msg);
-                                ros::spinOnce();
+                           
                            
                             break;
                         case 'a':
-                            //go back 
+                            //Movimento angular anti-horário
                              ROS_INFO("a");
-                             ros::spinOnce();
+                             
                              msg.linear.x = 0;
                              msg.angular.z =vel_angular ;
-                            pub.publish(msg);
-                                ros::spinOnce();
                             
                             break;
                         case 'd':
-                            //go back 
+                            //Movimento angular horário
                              ROS_INFO("d");
-                             ros::spinOnce();
+                            
                              msg.linear.x = 0;
                              msg.angular.z = - vel_angular;
-                            pub.publish(msg);
-                                ros::spinOnce();
+                            
                             
                             break; 
                         case 'q':
-                            //go back 
+                            //Movimento linear para frente com giro anti-horário
                              ROS_INFO("q");
-                             ros::spinOnce();
+                             
                              msg.linear.x = vel_linear;
                              msg.angular.z =  vel_angular;
-                            pub.publish(msg);
-                                ros::spinOnce();
-                            
+                         
                             break;
                         case 'z':
-                            //go back 
+                            //Movimento linear para trás com giro anti-horario
                              ROS_INFO("z");
-                             ros::spinOnce();
+                           
                              msg.linear.x = -vel_linear;
                              msg.angular.z = vel_angular;
-                            pub.publish(msg);
-                                ros::spinOnce();
+                           
                             
                             break; 
                         case 'e':
-                            //go back 
+                            //Movimento linear para frente com giro horario 
                              ROS_INFO("e");
-                             ros::spinOnce();
+                            
                              msg.linear.x = vel_linear;
                              msg.angular.z = - vel_angular;
-                            pub.publish(msg);
-                                ros::spinOnce();
+                            
                             
                             break; 
                         case 'c':
-                            //go back 
+                            //Movimento linear para tras com giro horario  
                              ROS_INFO("c");
-                             ros::spinOnce();
+                            
                              msg.linear.x = -vel_linear;
                              msg.angular.z =  - vel_angular;
-                            pub.publish(msg);
-                                ros::spinOnce();
+                           
                             
                             break; 
                         case 's':
-                            //go back 
+                            //Parado  
                              ROS_INFO("s");
-                             ros::spinOnce();
+                          
                              msg.linear.x = 0;
                              msg.angular.z =  0;
-                            pub.publish(msg);
-                                ros::spinOnce();
-                            
+                           
                             break; 
                         case 'p':
+                            //Fecha o Nó
                             ROS_INFO("NODE shutdown");
                             //close node s
                             ros::shutdown();
                             break;
                         case '1':
-                             
+                            //incrementa a velocidade linear
                             ROS_INFO("1");
                            
                               
@@ -159,7 +149,7 @@ int main(int argc, char **argv)
 
                             break; 
                         case '2':
-                             
+                             //Decrementa  a velocidade linear 
                             ROS_INFO("2");
                            
                               
@@ -168,7 +158,7 @@ int main(int argc, char **argv)
 
                             break;  
                         case '3':
-                             
+                             //Incrementa a velocidade angular 
                             ROS_INFO("3");
                            
                               
@@ -177,7 +167,7 @@ int main(int argc, char **argv)
 
                             break; 
                         case '4':
-                             
+                             //Decrementa a velocidade angular 
                             ROS_INFO("4");
                            
                               
@@ -196,7 +186,8 @@ int main(int argc, char **argv)
                         
                       }
                       
- 
+                pub.publish(msg);
+                ros::spinOnce();
 
             }		
  }

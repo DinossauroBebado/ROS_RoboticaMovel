@@ -1,17 +1,4 @@
-// W Movimento	linear	para	frente
-// X Movimento	linear	para	trás
-// A Movimento	angular	anti-horário
-// D Movimento	angular	horário
-// Q Movimento	linear	para	frente	com	giro	anti-horário
-// Z Movimento	linear	para	trás	com	giro	anti-horário
-// E Movimento	linear	para	frente	com	giro	horário
-// C Movimento	linear	para	trás	com	giro	horário
-// S Parado
-// 1 Incrementa	a	velocidade	linear
-// 2 Decrementa	a	velocidade	linear
-// 3 Incremente	a	velocidade	angular
-// 4 Decrementa	a	velocidade	angular
-// P Fechar	o	nó
+
 
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
